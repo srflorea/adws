@@ -34,7 +34,7 @@ describe "api/v1/decisions", :type => :api do
 		end
 
 		it "unsuccessful JSON" do
-			post "#{url}.json", :decision => { }
+			post "#{url}.json", :decision => {:name => ""}
 			puts last_response.status
 			last_response.status.should eql(422)
 			errors = {"errors" => {
