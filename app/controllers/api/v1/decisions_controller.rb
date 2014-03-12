@@ -1,6 +1,6 @@
 class Api::V1::DecisionsController < Api::V1::BaseController
 	def index
-		respond_with(Decision.all)
+		@decisions = Decision.all
 	end
 
 	def create
@@ -10,6 +10,10 @@ class Api::V1::DecisionsController < Api::V1::BaseController
 		else
 			respond_with(decision)
 		end
+	end
+
+	def show
+		@decision = Decision.find(params[:id])
 	end
 
 	private
