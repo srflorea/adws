@@ -1,8 +1,6 @@
 class Api::V1::DecisionsController < Api::V1::BaseController
 	def index
-		if params[:name].nil?
-			@decisions = Decision.all
-		end
+		@decisions = Decision.all
 	end
 
 	def create
@@ -21,6 +19,6 @@ class Api::V1::DecisionsController < Api::V1::BaseController
 	private
 
 		def decision_params
-			params.require(:decision).permit(:name, :description)
+			params.require(:decision).permit(:name, :group_id, :project_id)
 		end
 end

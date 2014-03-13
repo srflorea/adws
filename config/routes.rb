@@ -1,7 +1,13 @@
 Adws::Application.routes.draw do
+  resources :versions
+
+  resources :decisions
+
   namespace :api do
     namespace :v1 do
-      resources :decisions
+      resources :decisions do
+        resources :versions
+      end
     end
   end
   # The priority is based upon order of creation: first created -> highest priority.
