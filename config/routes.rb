@@ -5,8 +5,8 @@ Adws::Application.routes.draw do
 
   namespace :api do
     namespace :v1 do
-      resources :decisions do
-        resources :versions
+      resources :decisions, defaults: {format: :json} do
+        resources :versions, defaults: {format: :json}
       end
     end
   end
