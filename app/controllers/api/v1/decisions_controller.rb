@@ -1,6 +1,8 @@
 class Api::V1::DecisionsController < Api::V1::BaseController
 	def index
-		@decisions = Decision.all
+		if params[:name].nil?
+			@decisions = Decision.all
+		end
 	end
 
 	def create
