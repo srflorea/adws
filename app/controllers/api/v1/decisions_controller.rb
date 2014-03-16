@@ -1,6 +1,6 @@
 class Api::V1::DecisionsController < Api::V1::BaseController
 	def index
-		@decisions = Decision.all
+		@decisions = Decision.all 
 	end
 
 	def create

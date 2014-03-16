@@ -3,6 +3,8 @@ Adws::Application.routes.draw do
 
   resources :decisions
 
+  match '/', to: 'welcome#show', via: 'get'
+
   namespace :api do
     namespace :v1 do
       resources :decisions, defaults: {format: :json} do

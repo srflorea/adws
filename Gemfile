@@ -60,4 +60,6 @@ end
 
 gem 'rabl'
 
+gem 'rails_12factor'
+
 ruby '2.0.0'
