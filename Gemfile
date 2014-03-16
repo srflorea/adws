@@ -59,3 +59,5 @@ end
 # gem 'debugger', group: [:development, :test]
 
 gem 'rabl'
+
+ruby '2.0.0'
