@@ -23,5 +23,4 @@ production:
   encoding: unicode
   database: adws_development
   pool: 5
-  timeout: 5000
-  password: parola
+  password: Siguranta22.
