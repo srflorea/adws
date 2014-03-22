@@ -1,6 +1,7 @@
 class Api::V1::DecisionsController < Api::V1::BaseController
 	def index
-		@decisions = Decision.all 
+		@decisions = Decision.all
+  		@decisions = @decisions.select { |d| d.name == params[:name] } if !params[:name].blank?
 	end
 
 	def create
