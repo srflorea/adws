@@ -1,7 +1,10 @@
 Adws::Application.routes.draw do
+  get "users/new"
+  get "users/create"
+  get "users/show"
   resources :versions
-
   resources :decisions
+  resources :users
 
   match '/', to: 'welcome#show', via: 'get'
 
