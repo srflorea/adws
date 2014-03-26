@@ -5,6 +5,8 @@ class SessionsController < ApplicationController
 
 		if user && user.autheticate(params[:signin][:password])
 			session[:user_id] = user.id
+		else
+			
 		end
 	end
 end
