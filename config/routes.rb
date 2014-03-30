@@ -1,4 +1,5 @@
 Adws::Application.routes.draw do
+  get "users/new"
   resources :versions
 
   resources :decisions
