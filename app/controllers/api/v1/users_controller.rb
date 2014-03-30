@@ -12,11 +12,11 @@ class Api::V1::UsersController < Api::V1::BaseController
   	def create
   		@user = User.new(user_params)
   		if @user.save
-  			# Handle a succesful save
+        sign_in @user
+  			respond_with(@user, :location => api_v1_decision_path(@user))
   		else
-  			# unsuccesful
-  			# user.errors.full_messages ?????
-  			puts user.errors.full_messages
+        error = @user.errors.full_messages
+        render :status => 200, :json => {:error => error}
   		end
   	end
 
