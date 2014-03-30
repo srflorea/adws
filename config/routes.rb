@@ -13,6 +13,7 @@ Adws::Application.routes.draw do
       resources :decisions, defaults: {format: :json} do
         resources :versions, defaults: {format: :json}
       end
+      resources :users, defaults: {format: :json}
     end
   end
   # The priority is based upon order of creation: first created -> highest priority.
