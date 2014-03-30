@@ -12,11 +12,10 @@ class UsersController < ApplicationController
   	def create
   		@user = User.new(user_params)
   		if @user.save
-  			# Handle a succesful save
+  	     sign_in @user
+         render :json => { :message => "You have signed up succesfuly!" }
   		else
-  			# unsuccesful
-  			# user.errors.full_messages ?????
-  			puts user.errors.full_messages
+  	     render :json => { :message => "Error siging up!", :errors => user.errors.full_messages }
   		end
   	end
 

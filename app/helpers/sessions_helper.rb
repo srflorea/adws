@@ -11,6 +11,10 @@ module SessionsHelper
 		!current_user.nil?
 	end
 
+	def signed_in_user
+		render :json => { :error => "You have to sign in!"} unless signed_in?
+	end
+
 	def current_user=(user)
 		@current_user = user
 	end

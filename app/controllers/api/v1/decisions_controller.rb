@@ -1,4 +1,6 @@
 class Api::V1::DecisionsController < Api::V1::BaseController
+	before_filter :signed_in_user
+
 	def index
 		@decisions = Decision.all
   		@decisions = @decisions.select { |d| d.name == params[:name] } if !params[:name].blank?
