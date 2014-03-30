@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+	skip_before_filter :verify_authenticity_token, :only => [:create]
 
 	def show
 		@user = User.find(params[:id])
@@ -15,6 +16,7 @@ class UsersController < ApplicationController
   		else
   			# unsuccesful
   			# user.errors.full_messages ?????
+  			puts user.errors.full_messages
   		end
   	end
 
