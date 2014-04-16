@@ -4,13 +4,14 @@ Adws::Application.routes.draw do
   resources :decisions
   resources :users
 
-  match '/signup',  to: 'users#new',        via: 'get'
-  match '/signin',  to: 'sessions#new',     via: 'get'
-  match '/signout', to: 'sessions#destroy', via: 'delete'
+  match '/signup',  to: 'users#new',               via: 'get'
+  match '/signin',  to: 'sessions#new',            via: 'get'
+  match '/signout', to: 'sessions#destroy',        via: 'delete'
 
-  match '/signin',  to: 'sessions#create',  via: 'post'
+  match '/api/v1/signin',  to: 'sessions#create',  via: 'post'
+  match '/api/v1/signup',  to: 'users#create',     via: 'post'
 
-  match '/',        to: 'welcome#show',     via: 'get'
+  match '/',        to: 'welcome#show',            via: 'get'
 
   namespace :api do
     namespace :v1 do
