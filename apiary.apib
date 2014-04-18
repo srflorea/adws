@@ -4,7 +4,9 @@ HOST: http://architectural-decisions.herokuapp.com
 # TestAPI
 Notes API is a *short texts saving* service similar to its physical paper presence on your table.
 
-# User
+NOTE: This document is a **work in progress**.
+
+# Group User
 This section containts all the methods for manipulating a user profile. **To be continued**
 
 ## Signup [/api/v1/signup]
@@ -12,11 +14,21 @@ This section containts all the methods for manipulating a user profile. **To be 
 ### Create a new user [POST]
 + Request (application/json)
 
-        { "user": { "name": "Chair", "email": "chair@chair.com", "password": "password", "password_confirmation": "password" } }
+        { 
+            "user": 
+                { 
+                    "name": "Chair",
+                    "email": "chair@chair.com", 
+                    "password": "password", 
+                    "password_confirmation": "password" 
+                } 
+        }
 
 + Response 201 (application/json)
 
-        { "id": 3, "title": "Buy cheese and bread for breakfast." }
+        { 
+            "message": "Succes" 
+        }
 
 ## Authentication [/api/v1/signin]
 Use this resource in order to login or logout from the API.
@@ -29,14 +41,99 @@ password that you have user for signing up. The API will provide you an
 access token which will have to be sent with each request.
 + Request (application/json)
 
-        { "session": { "email": "chair@chair.com", "password": "password" } }
+        { 
+            "session": 
+                { 
+                    "email": "chair@chair.com", 
+                    "password": "password" 
+                } 
+        }
     
 + Response 200 (application/json)
     + Body
 
-            { "id": 2, "title": "Pick-up posters from post-office" }
+            { 
+                "message": "Succes"    
+            }
 
 ### Destroy a session - Logout [DELETE]
 Use this resource for distroying a session.
 + Response 204
 
+#Group Decision
+Use this resource for adding, updating, deleting or just retrieval of 
+resources.
+
+## GET /decisions{?remember_token}
+
++ Parameters
+     + remember_token (string) ... The access token.
+
++ Response 200
+    + Body 
+    
+            [
+                {
+                    "id":1,
+                    "name":"First",
+                    "group_id":1,
+                    "project_id":2,
+                    "decision_url":"http://localhost:3000/api/v1/decisions/1-first",
+                    "versions":
+                        [
+                            {
+                                "id":1,
+                                "number":1,
+                                "state":"proposed"
+                            }
+                        ]
+                }
+            ]
+
+## GET /decisions{id}{?remember_token}
+
++ Parameters
+    + id (string) ... ID of a decision.
+    + remember_token (string) ... The access token.
+    
++ Response 200
+    + Body 
+    
+            [
+                {
+                    "id":1,
+                    "name":"First",
+                    "group_id":1,
+                    "project_id":2,
+                    "decision_url":"http://localhost:3000/api/v1/decisions/1-first",
+                    "versions":
+                        [
+                            {
+                                "id":1,
+                                "number":1,
+                                "state":"proposed"
+                            }
+                        ]
+                }
+            ]
+
+## POST /decisions    
++ Request (application/json)
+
+        { 
+            "decision": 
+                { 
+                    "name": "First", 
+                    "group_id": "1", 
+                    "project_id": "2"
+                } 
+        }
+    
++ Response 200 (application/json)
+    + Body
+
+            { 
+                "message": "Succes" 
+            }
+
+    
