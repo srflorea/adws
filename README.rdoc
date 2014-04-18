@@ -1,28 +1,45 @@
-== README
+FORMAT: 1A
+HOST: http://architectural-decisions.herokuapp.com
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# TestAPI
+Notes API is a *short texts saving* service similar to its physical paper presence on your table.
 
-Things you may want to cover:
+# Group Notes
+Notes related resources of the **Notes API**
 
-* Ruby version
+## Signup [/api/v1/signup{?name,?email,?password,?password_confirmation}]
 
-* System dependencies
++ Parameters 
+    + name(required, string)
+    + email(required, string)
+    + password(required, string)
+    + password_confirmation(required, string)
 
-* Configuration
+### Create a new user [POST]
++ Request (application/json)
 
-* Database creation
+        { "title": "Buy cheese and bread for breakfast." }
 
-* Database initialization
++ Response 201 (application/json)
 
-* How to run the test suite
+        { "id": 3, "title": "Buy cheese and bread for breakfast." }
 
-* Services (job queues, cache servers, search engines, etc.)
+## Note [/notes/{id}]
+A single Note object with all its details
 
-* Deployment instructions
++ Parameters
+    + id (required, number, `1`) ... Numeric `id` of the Note to perform action with. Has example value.
 
-* ...
+### Retrieve a Note [GET]
++ Response 200 (application/json)
 
+    + Header
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+            X-My-Header: The Value
+
+    + Body
+
+            { "id": 2, "title": "Pick-up posters from post-office" }
+
+### Remove a Note [DELETE]
++ Response 204
