@@ -1,9 +1,9 @@
 FORMAT: 1A
 HOST: http://architectural-decisions.herokuapp.com
 
-# TestAPI
+# Architectural Decision Web Service - ADWS
 
-NOTE: This document is a **work in progress**.
+<code>NOTE:</code> This document is a **work in progress**.
 
 Designing a software system can be viewed as a sequence of decisions taken. 
 In order to make decision documentation available to the complete software 
@@ -12,18 +12,23 @@ to store, access, and update decisions in a multi-tool and multi-user
 environment. This web service provides the functionality to store, to retrieve, to delete and to 
 update decisions and related information.
 
+# **Allowed HTTPs requests:**
+* <code>POST</code> - To create or update resource
+* <code>PUT</code> - To create or update resource
+* <code>GET</code> - Get a resource or list of resources
+* <code>DELETE</code> - To delete resource
 
-Description Of Usual Server Responses
-* 200 OK - the request was successful (some API calls may return 201 instead).
-* 201 Created - the request was successful and a resource was created.
-* 204 No Content - the request was successful but there is no representation to return (i.e. the response is empty).
-* 400 Bad Request - the request could not be understood or was missing required parameters.
-* 401 Unauthorized - authentication failed or user doesn't have permissions for requested operation.
-* 403 Forbidden - access denied.
-* 404 Not Found - resource was not found.
-* 405 Method Not Allowed - requested method is not supported for resource.
-* 429 Too Many Requests - exceeded GoodData API limits. Pause requests, wait up to one minute, and try again.
-* 503 Service Unavailable - service is temporary unavailable (e.g. scheduled Platform Maintenance). Try again later.
+# **Description Of Usual Server Responses:**
+* _200_ <code>OK</code> - the request was successful (some API calls may return 201 instead).
+* _201_ <code>Created</code> - the request was successful and a resource was created.
+* _204_ <code>No Content</code> - the request was successful but there is no representation to return (i.e. the response is empty).
+* _400_ <code>Bad Request</code> - the request could not be understood or was missing required parameters.
+* _401_ <code>Unauthorized</code> - authentication failed or user doesn't have permissions for requested operation.
+* _403_ <code>Forbidden</code> - access denied.
+* _404_ <code>Not Found</code> - resource was not found.
+* _405_ <code>Method Not Allowed</code> - requested method is not supported for resource.
+* _429_ <code>Too Many Requests</code> - exceeded GoodData API limits. Pause requests, wait up to one minute, and try again.
+* _503_ <code>Service Unavailable</code> - service is temporary unavailable (e.g. scheduled Platform Maintenance). Try again later.
 
 # Group User
 This section containts all the methods for manipulating a user profile. **To be continued**
@@ -68,7 +73,7 @@ access token which will have to be sent with each request.
                 } 
         }
     
-+ Response 200 (application/json)
++ Response 201 (application/json)
     + Body
 
             { 
@@ -160,5 +165,6 @@ resources.
                         ]
                 }
             ]
+
 
     
