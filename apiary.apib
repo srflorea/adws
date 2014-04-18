@@ -2,9 +2,28 @@ FORMAT: 1A
 HOST: http://architectural-decisions.herokuapp.com
 
 # TestAPI
-Notes API is a *short texts saving* service similar to its physical paper presence on your table.
 
 NOTE: This document is a **work in progress**.
+
+Designing a software system can be viewed as a sequence of decisions taken. 
+In order to make decision documentation available to the complete software 
+engineering environment, we needed a central decision repository that allows
+to store, access, and update decisions in a multi-tool and multi-user 
+environment. This web service provides the functionality to store, to retrieve, to delete and to 
+update decisions and related information.
+
+
+Description Of Usual Server Responses
+* 200 OK - the request was successful (some API calls may return 201 instead).
+* 201 Created - the request was successful and a resource was created.
+* 204 No Content - the request was successful but there is no representation to return (i.e. the response is empty).
+* 400 Bad Request - the request could not be understood or was missing required parameters.
+* 401 Unauthorized - authentication failed or user doesn't have permissions for requested operation.
+* 403 Forbidden - access denied.
+* 404 Not Found - resource was not found.
+* 405 Method Not Allowed - requested method is not supported for resource.
+* 429 Too Many Requests - exceeded GoodData API limits. Pause requests, wait up to one minute, and try again.
+* 503 Service Unavailable - service is temporary unavailable (e.g. scheduled Platform Maintenance). Try again later.
 
 # Group User
 This section containts all the methods for manipulating a user profile. **To be continued**
@@ -64,8 +83,9 @@ Use this resource for distroying a session.
 Use this resource for adding, updating, deleting or just retrieval of 
 resources.
 
-## GET /decisions{?remember_token}
+ Decisions [/decisions/{id}{?remember_token}]
 
+## GET /decisions/{?remember_token}
 + Parameters
      + remember_token (string) ... The access token.
 
@@ -90,7 +110,31 @@ resources.
                 }
             ]
 
-## GET /decisions{id}{?remember_token}
+## POST /decisions{?remember_token}
+
++ Parameters
+    + remember_token (string) ... The access token.
+
++ Request (application/json)
+
+        { 
+            "decision": 
+                { 
+                    "name": "First", 
+                    "group_id": "1", 
+                    "project_id": "2"
+                } 
+        }
+    
++ Response 200 (application/json)
+    + Body
+
+            { 
+                "message": "Succes" 
+            }
+
+
+## GET /decisions/{id}{?remember_token}
 
 + Parameters
     + id (string) ... ID of a decision.
@@ -116,24 +160,5 @@ resources.
                         ]
                 }
             ]
-
-## POST /decisions    
-+ Request (application/json)
-
-        { 
-            "decision": 
-                { 
-                    "name": "First", 
-                    "group_id": "1", 
-                    "project_id": "2"
-                } 
-        }
-    
-+ Response 200 (application/json)
-    + Body
-
-            { 
-                "message": "Succes" 
-            }
 
     
