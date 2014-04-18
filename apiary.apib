@@ -7,17 +7,15 @@ Notes API is a *short texts saving* service similar to its physical paper presen
 # Group Notes
 Notes related resources of the **Notes API**
 
-## Notes Collection [/api/v1/decisions]
-### List all Notes [GET]
-+ Response 200 (application/json)
+## Signup [/api/v1/signup{?name,?email,?password,?password_confirmation}]
 
-        [{
-          "id": 1, "title": "Jogging or not"
-        }, {
-          "id": 2, "title": "Pick-up posters from post-office"
-        }]
++ Parameters 
+    + name(required, string)
+    + email(required, string)
+    + password(required, string)
+    + password_confirmation(required, string)
 
-### Create a Note [POST]
+### Create a new user [POST]
 + Request (application/json)
 
         { "title": "Buy cheese and bread for breakfast." }
