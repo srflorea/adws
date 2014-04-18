@@ -15,7 +15,7 @@ class UsersController < ApplicationController
   	     sign_in @user
          render :json => { :message => "You have signed up succesfuly!" }
   		else
-  	     render :json => { :message => "Error siging up!", :errors => user.errors.full_messages }
+  	     render :json => { :message => "Error siging up!", :errors => @user.errors.full_messages }
   		end
   	end
 
