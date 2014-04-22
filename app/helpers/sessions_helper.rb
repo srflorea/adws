@@ -4,6 +4,7 @@ module SessionsHelper
 		remember_token = User.new_remember_token
 		session[:remember_token] = remember_token
 		user.update_attribute(:remember_token, User.hash(remember_token))
+		user.update_attribute(:last_seen_at, Time.now)
 		self.current_user = user
 	end
 
