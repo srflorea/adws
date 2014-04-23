@@ -1,4 +1,4 @@
-For more futures, you can find the documentation of this project here: http://docs.adws.apiary.io/.
+For more futures you can find this project documentation here: http://docs.adws.apiary.io/.
 
 FORMAT: 1A
 HOST: https://architectural-decisions.herokuapp.com
@@ -169,5 +169,3 @@ Use this resource for retrieving a certain decision with a certain id.
                         ]
                 }
             ]
-
-
