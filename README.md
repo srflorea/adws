@@ -1,1 +1,1 @@
-http://docs.adws.apiary.io/
+[a relative link](apiary.apib)
