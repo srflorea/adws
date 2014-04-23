@@ -61,7 +61,7 @@ Use this resource in order to login or logout from the API.
 In order to access resources from this API you will need firstly to create a
 session. In order to be able to create a session you previously should have
 signed up.After sining up, use this resource by submitting the email and the
-password that you have user for signing up. The API will provide you an 
+password that you have provided signing up. The API will provide you an 
 access token which will have to be sent with each request.
 + Request (application/json)
 
@@ -88,9 +88,9 @@ Use this resource for distroying a session.
 Use this resource for adding, updating, deleting or just retrieval of 
 resources.
 
- Decisions [/decisions/{id}{?remember_token}]
-
 ## GET /decisions/{?remember_token}
+Use this resource for retrieving a group of decisions.
+
 + Parameters
      + remember_token (string) ... The access token.
 
@@ -116,6 +116,7 @@ resources.
             ]
 
 ## POST /decisions{?remember_token}
+Use this resource for adding a new decision.
 
 + Parameters
     + remember_token (string) ... The access token.
@@ -140,6 +141,7 @@ resources.
 
 
 ## GET /decisions/{id}{?remember_token}
+Use this resource for retrieving a certain decision with a certain id.
 
 + Parameters
     + id (string) ... ID of a decision.
