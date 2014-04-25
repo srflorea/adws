@@ -1,13 +1,5 @@
 source 'https://rubygems.org'
 
-group :test, :development do
-	gem 'rspec-rails', "~> 2.14"
-end
-
-group :test do
-	gem 'capybara', "2.1.0"
-end
-
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.3'
 
