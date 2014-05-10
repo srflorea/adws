@@ -82,7 +82,12 @@ access token which will have to be sent with each request.
 
 ### Destroy a session - Logout [DELETE]
 Use this resource for distroying a session.
-+ Response 204
++ Response 200 (application/json)
+    + Body
+    
+            {
+                "message": "Session deleted successfuly"
+            }
 
 #Group Decision
 Use this resource for adding, updating, deleting or just retrieval of 
@@ -169,4 +174,17 @@ Use this resource for retrieving a certain decision with a certain id.
             ]
 
 
+## DELETE /api/v1/decisions/{id}{?remember_token}
+Use this resource for deleting a decision using its id. 
+
++ Parameters
+    + id (string) ... ID of a decision.
+    + remember_token (string) ... The access token.
+    
++ Response 200
+    + Body
+    
+            {
+                "message": "Session deleted successfuly"
+            }
     
