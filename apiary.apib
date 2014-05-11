@@ -50,8 +50,9 @@ This section containts all the methods for manipulating a user profile. **To be 
 
 + Response 201 (application/json)
 
-        { 
-            "message": "Succes" 
+        {   "status_code": 201
+            "message": "You have signed up successfully!"
+            "auth_token": "sLKlK8koTaYSjBRZ-ORkdg"
         }
 
 ## Authentication [/api/v1/signin]
@@ -77,7 +78,9 @@ access token which will have to be sent with each request.
     + Body
 
             { 
-                "message": "Succes"    
+                "status_code": 201
+                "message": "You have signed in successfully!"
+                "auth_token": "sLKlK8koTaYSjBRZ-ORkdg"   
             }
 
 ### Destroy a session - Logout [DELETE]
