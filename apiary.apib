@@ -97,6 +97,17 @@ Use this resource for distroying a session.
 Use this resource for adding, updating, deleting or just retrieval of 
 resources.
 
+# Decision properties
+
+*   id (integer): Decision id
+*   name (string): Decision name
+*   created_at (date): Date of decision creation
+*   updated_at (date): Date of last decision update
+*   url (uri): URL of current decision
+*   versions_url (uri): URL for accessing the versions of a decision
+*   dependences_url (uri): URL for accessing the dependences where a decision is involved
+*   project_url (uri): URL for accessing the project of a decision
+
 ## GET /api/v1/decisions/{?remember_token}
 Use this resource for retrieving a group of decisions.
 
