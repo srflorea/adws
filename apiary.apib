@@ -188,6 +188,20 @@ Use this resource for retrieving a certain decision with a certain id.
                 }
             ]
 
+## PUT /api/v1/decisions/{id}{?remember_token}
+Use this resource for editing a decision using its id.
+
++ Parameters
+    + id (string) ... ID of a decision.
+    + remember_token (string) ... The access token.
+    
++ Response 200 (application/json)
+    + Body
+    
+            {
+                "status_code":200,
+                "message":"Resource updated successfully"
+            }
 
 ## DELETE /api/v1/decisions/{id}{?remember_token}
 Use this resource for deleting a decision using its id. 
