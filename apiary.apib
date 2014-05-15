@@ -195,6 +195,17 @@ Use this resource for editing a decision using its id.
     + id (string) ... ID of a decision.
     + remember_token (string) ... The access token.
     
++ Request (application/json)
+
+        { 
+            "decision": 
+                { 
+                    "name": "First", 
+                    "group_id": "1", 
+                    "project_id": "2"
+                } 
+        }
+
 + Response 200 (application/json)
     + Body
     
