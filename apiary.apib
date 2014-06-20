@@ -297,9 +297,9 @@ Use this resource for adding a new decision.
 + Response 200 (application/json)
     + Body
 
-            { 
-                "message": "Succes" 
-            }
+                "status_code":200,
+                "message":"Resource created successfully!",
+                "content":""
 
 
 ## GET /api/v1/decisions/{id}{?remember_token}
@@ -357,6 +357,167 @@ Use this resource for deleting a decision using its id.
 
 + Parameters
     + id (string) ... ID of a decision.
+    + remember_token (string) ... The access token.
+    
++ Response 200 (application/json)
+    + Body
+    
+            {
+                "status_code":200,
+                "message":"Resource deleted successfully!",
+                "content":""
+            }
+    
+#Group Version
+Use this resource for adding, updating, deleting or just retrieval of 
+decisions versions.
+
+# Version properties
+
+*   id (integer): Version id
+*   state (string): The state of the decision which version this is
+*   problem (string): The problem that a version tries to solve
+*   description (string): The descripton of a decision version
+*   arguments (string): The arguments for adopting a decision version
+*   created_at (date): Date of version creation
+*   updated_at (date): Date of last version update
+*   decision (object): The object representing the decision which version this is
+*   url (uri): URL of current decision version
+*   iteration_url (uri): URL for accessing the iteration of a decision version
+
+## GET /api/v1/versions/{?remember_token}
+Use this resource for retrieving all the decisions versions existing in the API.
+
++ Parameters
+     + remember_token (string) ... The access token.
+
++ Response 200 (application/json)
+    + Body 
+    
+            [
+                {
+                    "id":1,
+                    "name":"First",
+                    "created_at":"",
+                    "updated_at":"",
+                    "url":"http://localhost:3000/api/v1/decisions/1",
+                    "versions_url":"http://localhost:3000/api/v1/decisions/1/versions",
+                    "dependences_url":http://localhost:3000/api/v1/decisions/1/dependences",
+                    "project_url":http://localhost:3000/api/v1/decisions/1/project"
+                }
+            ]
+
+## GET /api/v1/decisions/{id}/versions{?remember_token}
+Use this resource for retrieving all the versions that belongs to a certain decision.
+
++ Parameters
+    + id (string) ... ID of a decision version.
+    + remember_token (string) ... The access token.
+
++ Response 200 (application/json)
+    + Body 
+    
+            [
+                {
+                    "id":1,
+                    "name":"First",
+                    "created_at":"",
+                    "updated_at":"",
+                    "url":"http://localhost:3000/api/v1/decisions/1",
+                    "versions_url":"http://localhost:3000/api/v1/decisions/1/versions",
+                    "dependences_url":http://localhost:3000/api/v1/decisions/1/dependences",
+                    "project_url":http://localhost:3000/api/v1/decisions/1/project"
+                }
+            ]
+
+## POST /api/v1/versions{?remember_token}
+Use this resource for adding a new decision version.
+
++ Parameters
+    + remember_token (string) ... The access token.
+
++ Request (application/json)
+
+        { 
+            "version": 
+                { 
+                    "state": "idea", 
+                    "problem": "The problem", 
+                    "description": "The description",
+                    "arguments":"Some arguments",
+                    "iteration_id":"1",
+                    "decision_id":"1"
+                } 
+        }
+    
++ Response 200 (application/json)
+    + Body
+
+            { 
+                "status_code":200,
+                "message":"Resource created successfully!",
+                "content":""
+            }
+
+
+## GET /api/v1/versions/{id}{?remember_token}
+Use this resource for retrieving a certain decision version with a certain id.
+
++ Parameters
+    + id (string) ... ID of a version.
+    + remember_token (string) ... The access token.
+    
++ Response 200 (application/json)
+    + Body 
+    
+            [
+                {
+                    "id":1,
+                    "name":"First",
+                    "created_at":"",
+                    "updated_at":"",
+                    "url":"http://localhost:3000/api/v1/decisions/1",
+                    "versions_url":"http://localhost:3000/api/v1/decisions/1/versions",
+                    "dependences_url":http://localhost:3000/api/v1/decisions/1/dependences",
+                    "project_url":http://localhost:3000/api/v1/decisions/1/project"
+                }
+            ]
+
+## PUT /api/v1/versions/{id}{?remember_token}
+Use this resource for editing a decision version using its id.
+
++ Parameters
+    + id (string) ... ID of a version.
+    + remember_token (string) ... The access token.
+    
++ Request (application/json)
+
+        { 
+            "version": 
+                { 
+                    "state": "idea", 
+                    "problem": "The problem", 
+                    "description": "The description",
+                    "arguments":"Some arguments",
+                    "iteration_id":"1",
+                    "decision_id":"1"
+                } 
+        }
+
++ Response 200 (application/json)
+    + Body
+    
+            {
+                "status_code":200,
+                "message":"Resource updated successfully!",
+                "content":""
+            }
+
+## DELETE /api/v1/versions/{id}{?remember_token}
+Use this resource for deleting a decision version using its id. 
+
++ Parameters
+    + id (string) ... ID of a version.
     + remember_token (string) ... The access token.
     
 + Response 200 (application/json)
