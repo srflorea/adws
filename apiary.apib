@@ -95,7 +95,7 @@ Use this resource for distroying a session.
 
 #Group Decision
 Use this resource for adding, updating, deleting or just retrieval of 
-resources.
+decisions.
 
 # Decision properties
 
@@ -109,7 +109,7 @@ resources.
 *   project_url (uri): URL for accessing the project of a decision
 
 ## GET /api/v1/decisions/{?remember_token}
-Use this resource for retrieving a group of decisions.
+Use this resource for retrieving all the decisions existing in the API.
 
 + Parameters
      + remember_token (string) ... The access token.
@@ -121,17 +121,31 @@ Use this resource for retrieving a group of decisions.
                 {
                     "id":1,
                     "name":"First",
-                    "group_id":1,
-                    "project_id":2,
-                    "decision_url":"http://localhost:3000/api/v1/decisions/1-first",
-                    "versions":
-                        [
-                            {
-                                "id":1,
-                                "number":1,
-                                "state":"proposed"
-                            }
-                        ]
+                    "url":"http://localhost:3000/api/v1/decisions/1",
+                    "versions_url":"http://localhost:3000/api/v1/decisions/1/versions",
+                    "dependences_url":http://localhost:3000/api/v1/decisions/1/dependences",
+                    "project_url":http://localhost:3000/api/v1/decisions/1/project"
+                }
+            ]
+
+## GET /api/v1/projects/{id}/decisions{?remember_token}
+Use this resource for retrieving all the decisions that belongs to a certain project.
+
++ Parameters
+    + id (string) ... ID of a project.
+     + remember_token (string) ... The access token.
+
++ Response 200 (application/json)
+    + Body 
+    
+            [
+                {
+                    "id":1,
+                    "name":"First",
+                    "url":"http://localhost:3000/api/v1/decisions/1",
+                    "versions_url":"http://localhost:3000/api/v1/decisions/1/versions",
+                    "dependences_url":http://localhost:3000/api/v1/decisions/1/dependences",
+                    "project_url":http://localhost:3000/api/v1/decisions/1/project"
                 }
             ]
 
@@ -174,17 +188,10 @@ Use this resource for retrieving a certain decision with a certain id.
                 {
                     "id":1,
                     "name":"First",
-                    "group_id":1,
-                    "project_id":2,
-                    "decision_url":"http://localhost:3000/api/v1/decisions/1-first",
-                    "versions":
-                        [
-                            {
-                                "id":1,
-                                "number":1,
-                                "state":"proposed"
-                            }
-                        ]
+                    "url":"http://localhost:3000/api/v1/decisions/1",
+                    "versions_url":"http://localhost:3000/api/v1/decisions/1/versions",
+                    "dependences_url":http://localhost:3000/api/v1/decisions/1/dependences",
+                    "project_url":http://localhost:3000/api/v1/decisions/1/project"
                 }
             ]
 
@@ -211,7 +218,8 @@ Use this resource for editing a decision using its id.
     
             {
                 "status_code":200,
-                "message":"Resource updated successfully"
+                "message":"Resource updated successfully",
+                "content":""
             }
 
 ## DELETE /api/v1/decisions/{id}{?remember_token}
@@ -226,6 +234,7 @@ Use this resource for deleting a decision using its id.
     
             {
                 "status_code":200,
-                "message":"Resource deleted successfully"
+                "message":"Resource deleted successfully",
+                "content":""
             }
     
