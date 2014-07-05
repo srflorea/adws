@@ -676,6 +676,223 @@ Use this resource for deleting a stakeholder using its id.
 
 #Group Action
 
+*   id (integer): Version id
+*   action (string): The action that the stakeholder did
+*   created_at (date): Date of stakeholder creation
+*   updated_at (date): Date of last stakeholder update
+*   url (uri): URL of current stakeholder
+*   stakeholder: Stakeholder that did the action 
+*   version: Version that was affected by current action
+
+## GET /api/v1/actions/{?remember_token}
+Use this resource for retrieving all the actions existing in the API.
+
++ Parameters
+     + remember_token (string) ... The access token.
+
++ Response 200 (application/json)
+    + Body 
+   
+            [ 
+                {
+                    id: 1,
+                    action: "propose",
+                    created_at: "2014-07-05T14:51:15.131Z",
+                    updated_at: "2014-07-05T14:51:15.131Z",
+                    url: "http://localhost:3000/api/v1/actions/1",
+                    stakeholder: {
+                        id: 1,
+                        name: "John",
+                        function: "Manager",
+                        created_at: "2014-07-05T13:51:43.528Z",
+                        updated_at: "2014-07-05T13:51:43.528Z",
+                        url: "http://localhost:3000/api/v1/stakeholders/1",
+                        actions_url: "http://localhost:3000/api/v1/stakeholders/1/actions"
+                    },
+                    version: {
+                        id: 1,
+                        state: "proposed",
+                        problem: "A problem",
+                        description: "A description",
+                        arguments: "Some arguments",
+                        created_at: "2014-06-21T12:15:29.899Z",
+                        updated_at: "2014-07-05T14:49:15.055Z",
+                        url: "http://localhost:3000/api/v1/versions/1",
+                        iteration_url: "http://localhost:3000/api/v1/iterations/1",
+                        decision: {
+                            id: 1,
+                            name: "First decision",
+                            created_at: "2014-06-21T09:51:10.243Z",
+                            updated_at: "2014-06-21T09:55:36.110Z",
+                            url: "http://localhost:3000/api/v1/decisions/1",
+                            versions_url: "http://localhost:3000/api/v1/decisions/1/versions",
+                            dependences_url: "http://localhost:3000/api/v1/decisions/1/dependences",
+                            project_url: "http://localhost:3000/api/v1/projects/1",
+                            group_url: "http://localhost:3000/api/v1/groups/1"
+                        }
+                    }
+                }
+            ]
+
+## POST /api/v1/actions{?remember_token}
+Use this resource for adding a new action.
+
++ Parameters
+    + remember_token (string) ... The access token.
+
++ Request (application/json)
+
+        { 
+            "my_action": 
+                { 
+                    "action": "propose", 
+                    "stakeholder_id": 1,
+                    "version_id": 1
+                } 
+        }
+    
++ Response 200 (application/json)
+    + Body
+
+            [ 
+                {
+                    id: 1,
+                    action: "propose",
+                    created_at: "2014-07-05T14:51:15.131Z",
+                    updated_at: "2014-07-05T14:51:15.131Z",
+                    url: "http://localhost:3000/api/v1/actions/1",
+                    stakeholder: {
+                        id: 1,
+                        name: "John",
+                        function: "Manager",
+                        created_at: "2014-07-05T13:51:43.528Z",
+                        updated_at: "2014-07-05T13:51:43.528Z",
+                        url: "http://localhost:3000/api/v1/stakeholders/1",
+                        actions_url: "http://localhost:3000/api/v1/stakeholders/1/actions"
+                    },
+                    version: {
+                        id: 1,
+                        state: "proposed",
+                        problem: "A problem",
+                        description: "A description",
+                        arguments: "Some arguments",
+                        created_at: "2014-06-21T12:15:29.899Z",
+                        updated_at: "2014-07-05T14:49:15.055Z",
+                        url: "http://localhost:3000/api/v1/versions/1",
+                        iteration_url: "http://localhost:3000/api/v1/iterations/1",
+                        decision: {
+                            id: 1,
+                            name: "First decision",
+                            created_at: "2014-06-21T09:51:10.243Z",
+                            updated_at: "2014-06-21T09:55:36.110Z",
+                            url: "http://localhost:3000/api/v1/decisions/1",
+                            versions_url: "http://localhost:3000/api/v1/decisions/1/versions",
+                            dependences_url: "http://localhost:3000/api/v1/decisions/1/dependences",
+                            project_url: "http://localhost:3000/api/v1/projects/1",
+                            group_url: "http://localhost:3000/api/v1/groups/1"
+                        }
+                    }
+                }
+            ]
+
+## GET /api/v1/actions/{id}{?remember_token}
+Use this resource for retrieving a certain action with a certain id.
+
++ Parameters
+    + id (string) ... ID of an action.
+    + remember_token (string) ... The access token.
+    
++ Response 200 (application/json)
+    + Body 
+    
+            [ 
+                {
+                    id: 1,
+                    action: "propose",
+                    created_at: "2014-07-05T14:51:15.131Z",
+                    updated_at: "2014-07-05T14:51:15.131Z",
+                    url: "http://localhost:3000/api/v1/actions/1",
+                    stakeholder: {
+                        id: 1,
+                        name: "John",
+                        function: "Manager",
+                        created_at: "2014-07-05T13:51:43.528Z",
+                        updated_at: "2014-07-05T13:51:43.528Z",
+                        url: "http://localhost:3000/api/v1/stakeholders/1",
+                        actions_url: "http://localhost:3000/api/v1/stakeholders/1/actions"
+                    },
+                    version: {
+                        id: 1,
+                        state: "proposed",
+                        problem: "A problem",
+                        description: "A description",
+                        arguments: "Some arguments",
+                        created_at: "2014-06-21T12:15:29.899Z",
+                        updated_at: "2014-07-05T14:49:15.055Z",
+                        url: "http://localhost:3000/api/v1/versions/1",
+                        iteration_url: "http://localhost:3000/api/v1/iterations/1",
+                        decision: {
+                            id: 1,
+                            name: "First decision",
+                            created_at: "2014-06-21T09:51:10.243Z",
+                            updated_at: "2014-06-21T09:55:36.110Z",
+                            url: "http://localhost:3000/api/v1/decisions/1",
+                            versions_url: "http://localhost:3000/api/v1/decisions/1/versions",
+                            dependences_url: "http://localhost:3000/api/v1/decisions/1/dependences",
+                            project_url: "http://localhost:3000/api/v1/projects/1",
+                            group_url: "http://localhost:3000/api/v1/groups/1"
+                        }
+                    }
+                }
+            ]
+
+## PUT /api/v1/actions/{id}{?remember_token}
+Use this resource for editing an action using its id.
+
++ Parameters
+    + id (string) ... ID of an action.
+    + remember_token (string) ... The access token.
+    
++ Request (application/json)
+
+        { 
+            "my_action": 
+                { 
+                    "action": "propose", 
+                    "stakeholder_id": 1,
+                    "version_id": 1
+                } 
+        }
+
++ Response 200 (application/json)
+    + Body
+    
+            [
+                {
+                    "status_code":200,
+                    "message":"Resource updated successfully!",
+                    "content":""
+                }
+            ]
+
+## DELETE /api/v1/actions/{id}{?remember_token}
+Use this resource for deleting an action using its id. 
+
++ Parameters
+    + id (string) ... ID of an action.
+    + remember_token (string) ... The access token.
+    
++ Response 200 (application/json)
+    + Body
+    
+            [
+                {
+                    "status_code":200,
+                    "message":"Resource deleted successfully!",
+                    "content":""
+                }
+            ]
+
 #Group Impact
 
 #Group Force
