@@ -537,6 +537,143 @@ Use this resource for deleting a decision version using its id.
 
 #Group Stakeholder
 
+*   id (integer): Version id
+*   name (string): The name of the stakeholder
+*   function (string): The function that the stakeholder holds in the project
+*   created_at (date): Date of stakeholder creation
+*   updated_at (date): Date of last stakeholder update
+*   url (uri): URL of current stakeholder
+*   actions_url (uri): URL for accessing the actions of a stakeholder
+
+## GET /api/v1/stakeholders/{?remember_token}
+Use this resource for retrieving all the stakeholders existing in the API.
+
++ Parameters
+     + remember_token (string) ... The access token.
+
++ Response 200 (application/json)
+    + Body 
+    
+            [
+                {
+                    id: 1,
+                    name: "John",
+                    function: "Manager",
+                    created_at: "2014-07-05T13:51:43.528Z",
+                    updated_at: "2014-07-05T13:51:43.528Z",
+                    url: "http://localhost:3000/api/v1/stakeholders/1",
+                    actions_url: "http://localhost:3000/api/v1/stakeholders/1/actions"
+                },
+                {
+                    id: 2,
+                    name: "Mark",
+                    function: "Developer",
+                    created_at: "2014-07-05T13:53:11.016Z",
+                    updated_at: "2014-07-05T13:53:11.016Z",
+                    url: "http://localhost:3000/api/v1/stakeholders/2",
+                    actions_url: "http://localhost:3000/api/v1/stakeholders/2/actions"
+                }
+            ]
+
+## POST /api/v1/stakeholders{?remember_token}
+Use this resource for adding a new stakeholder.
+
++ Parameters
+    + remember_token (string) ... The access token.
+
++ Request (application/json)
+
+        { 
+            "stakeholder": 
+                { 
+                    "name": "John", 
+                    "function": "Manager", 
+                } 
+        }
+    
++ Response 200 (application/json)
+    + Body
+
+            [
+                {
+                    id: 1,
+                    name: "John",
+                    function: "Manager",
+                    created_at: "2014-07-05T13:51:43.528Z",
+                    updated_at: "2014-07-05T13:51:43.528Z",
+                    url: "http://localhost:3000/api/v1/stakeholders/1",
+                    actions_url: "http://localhost:3000/api/v1/stakeholders/1/actions"
+                }
+            ]
+
+## GET /api/v1/stakeholders/{id}{?remember_token}
+Use this resource for retrieving a certain stakeholder with a certain id.
+
++ Parameters
+    + id (string) ... ID of a stakeholder.
+    + remember_token (string) ... The access token.
+    
++ Response 200 (application/json)
+    + Body 
+    
+            [
+                {
+                    id: 1,
+                    name: "John",
+                    function: "Manager",
+                    created_at: "2014-07-05T13:51:43.528Z",
+                    updated_at: "2014-07-05T13:51:43.528Z",
+                    url: "http://localhost:3000/api/v1/stakeholders/1",
+                    actions_url: "http://localhost:3000/api/v1/stakeholders/1/actions"
+                }
+            ]
+
+## PUT /api/v1/stakeholders/{id}{?remember_token}
+Use this resource for editing a stakeholder using its id.
+
++ Parameters
+    + id (string) ... ID of a stakeholder.
+    + remember_token (string) ... The access token.
+    
++ Request (application/json)
+
+        [ 
+            "stakeholder": 
+                { 
+                    "name": "John", 
+                    "function": "Manager", 
+                } 
+        ]
+
++ Response 200 (application/json)
+    + Body
+    
+            [
+                {
+                    "status_code":200,
+                    "message":"Resource updated successfully!",
+                    "content":""
+                }
+            ]
+
+## DELETE /api/v1/stakeholders/{id}{?remember_token}
+Use this resource for deleting a stakeholder using its id. 
+
++ Parameters
+    + id (string) ... ID of a stakeholder.
+    + remember_token (string) ... The access token.
+    
++ Response 200 (application/json)
+    + Body
+    
+            [
+                {
+                    "status_code":200,
+                    "message":"Resource deleted successfully!",
+                    "content":""
+                }
+            ]
+
 #Group Action
 
 #Group Impact
