@@ -669,6 +669,199 @@ Use this resource for deleting an iteration using its id.
 
 #Group Dependence
 
+*   id (integer): Version id
+*   relationship (string): The relationship between origin and target decision
+*   created_at (date): Date of dependence creation
+*   updated_at (date): Date of last dependence update
+*   url (uri): URL of current dependence
+*   origin decision: Origin decision of the dependence
+*   target decision: Target decision of the dependence
+
+## GET /api/v1/dependences/{?remember_token}
+Use this resource for retrieving all the dependences existing in the API.
+
++ Parameters
+     + remember_token (string) ... The access token.
+
++ Response 200 (application/json)
+    + Body 
+    
+            [
+                {
+                    id: 2,
+                    relationship: "depends_on",
+                    created_at: "2014-06-21T09:58:16.904Z",
+                    updated_at: "2014-06-21T09:58:16.904Z",
+                    url: "http://localhost:3000/api/v1/dependences/2",
+                    origin_decision: {
+                        name: "First decision",
+                        url: "http://localhost:3000/api/v1/decisions/1"
+                    },
+                    target_decision: {
+                        name: "Second decision",
+                        url: "http://localhost:3000/api/v1/decisions/2"
+                    }
+                },
+                {
+                    id: 3,
+                    relationship: "depends_on",
+                    created_at: "2014-06-21T09:58:53.803Z",
+                    updated_at: "2014-06-21T09:58:53.803Z",
+                    url: "http://localhost:3000/api/v1/dependences/3",
+                    origin_decision: {
+                        name: "First decision",
+                        url: "http://localhost:3000/api/v1/decisions/1"
+                    },
+                    target_decision: {
+                        name: "Second decision",
+                        url: "http://localhost:3000/api/v1/decisions/2"
+                    }
+                }
+            ]
+
+## GET /api/v1/decisions/{id}/dependences{?remember_token}
+Use this resource for retrieving all the dependences that involve a certain decision as an origin or target decision.
+
++ Parameters
+    + id (string) ... ID of a dependence.
+    + remember_token (string) ... The access token.
+
++ Response 200 (application/json)
+    + Body 
+    
+            [
+                {
+                    id: 2,
+                    relationship: "depends_on",
+                    created_at: "2014-06-21T09:58:16.904Z",
+                    updated_at: "2014-06-21T09:58:16.904Z",
+                    url: "http://localhost:3000/api/v1/dependences/2",
+                    origin_decision: {
+                        name: "First decision",
+                        url: "http://localhost:3000/api/v1/decisions/1"
+                    },
+                    target_decision: {
+                        name: "Second decision",
+                        url: "http://localhost:3000/api/v1/decisions/2"
+                    }
+                }
+            ]
+
+
+## POST /api/v1/dependences{?remember_token}
+Use this resource for adding a new dependence
+
++ Parameters
+    + remember_token (string) ... The access token.
+
++ Request (application/json)
+
+        { 
+            "dependence": 
+                { 
+                    "relationship": "depends on", 
+                    "origin_id": 1,
+                    "target_id": 2
+                } 
+        }
+    
++ Response 200 (application/json)
+    + Body
+
+            [
+                {
+                    id: 2,
+                    relationship: "depends_on",
+                    created_at: "2014-06-21T09:58:16.904Z",
+                    updated_at: "2014-06-21T09:58:16.904Z",
+                    url: "http://localhost:3000/api/v1/dependences/2",
+                    origin_decision: {
+                        name: "First decision",
+                        url: "http://localhost:3000/api/v1/decisions/1"
+                    },
+                    target_decision: {
+                        name: "Second decision",
+                        url: "http://localhost:3000/api/v1/decisions/2"
+                    }
+                }
+            ]
+
+## GET /api/v1/dependences/{id}{?remember_token}
+Use this resource for retrieving a certain dependence with a certain id.
+
++ Parameters
+    + id (string) ... ID of a dependence.
+    + remember_token (string) ... The access token.
+    
++ Response 200 (application/json)
+    + Body 
+    
+            [
+                {
+                    id: 2,
+                    relationship: "depends_on",
+                    created_at: "2014-06-21T09:58:16.904Z",
+                    updated_at: "2014-06-21T09:58:16.904Z",
+                    url: "http://localhost:3000/api/v1/dependences/2",
+                    origin_decision: {
+                        name: "First decision",
+                        url: "http://localhost:3000/api/v1/decisions/1"
+                    },
+                    target_decision: {
+                        name: "Second decision",
+                        url: "http://localhost:3000/api/v1/decisions/2"
+                    }
+                }
+            ]
+
+## PUT /api/v1/dependences/{id}{?remember_token}
+Use this resource for editing a dependence using its id.
+
++ Parameters
+    + id (string) ... ID of a dependence.
+    + remember_token (string) ... The access token.
+    
++ Request (application/json)
+
+        [ 
+            "deoendence": 
+                { 
+                    "relationship": "depends on", 
+                    "origin_id": 1,
+                    "target_id": 3
+                } 
+        ]
+
++ Response 200 (application/json)
+    + Body
+    
+            [
+                {
+                    "status_code":200,
+                    "message":"Resource updated successfully!",
+                    "content":""
+                }
+            ]
+
+## DELETE /api/v1/stakeholders/{id}{?remember_token}
+Use this resource for deleting a dependence using its id. 
+
++ Parameters
+    + id (string) ... ID of a dependence.
+    + remember_token (string) ... The access token.
+    
++ Response 200 (application/json)
+    + Body
+    
+            [
+                {
+                    "status_code":200,
+                    "message":"Resource deleted successfully!",
+                    "content":""
+                }
+            ]
+
+
 #Group Stakeholder
 
 *   id (integer): Version id
