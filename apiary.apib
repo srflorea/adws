@@ -1077,6 +1077,57 @@ Use this resource for retrieving all the actions existing in the API.
                 }
             ]
 
+## GET /api/v1/stakeholders/{id}/actions{?remember_token}
+Use this resource for retrieving all the actions that a stakeholder did.
+
++ Parameters
+    + id (string) ... ID of a stakeholder.
+    + remember_token (string) ... The access token.
+
++ Response 200 (application/json)
+    + Body 
+    
+            [ 
+                {
+                    id: 1,
+                    action: "propose",
+                    created_at: "2014-07-05T14:51:15.131Z",
+                    updated_at: "2014-07-05T14:51:15.131Z",
+                    url: "http://localhost:3000/api/v1/actions/1",
+                    stakeholder: {
+                        id: 1,
+                        name: "John",
+                        function: "Manager",
+                        created_at: "2014-07-05T13:51:43.528Z",
+                        updated_at: "2014-07-05T13:51:43.528Z",
+                        url: "http://localhost:3000/api/v1/stakeholders/1",
+                        actions_url: "http://localhost:3000/api/v1/stakeholders/1/actions"
+                    },
+                    version: {
+                        id: 1,
+                        state: "proposed",
+                        problem: "A problem",
+                        description: "A description",
+                        arguments: "Some arguments",
+                        created_at: "2014-06-21T12:15:29.899Z",
+                        updated_at: "2014-07-05T14:49:15.055Z",
+                        url: "http://localhost:3000/api/v1/versions/1",
+                        iteration_url: "http://localhost:3000/api/v1/iterations/1",
+                        decision: {
+                            id: 1,
+                            name: "First decision",
+                            created_at: "2014-06-21T09:51:10.243Z",
+                            updated_at: "2014-06-21T09:55:36.110Z",
+                            url: "http://localhost:3000/api/v1/decisions/1",
+                            versions_url: "http://localhost:3000/api/v1/decisions/1/versions",
+                            dependences_url: "http://localhost:3000/api/v1/decisions/1/dependences",
+                            project_url: "http://localhost:3000/api/v1/projects/1",
+                            group_url: "http://localhost:3000/api/v1/groups/1"
+                        }
+                    }
+                }
+            ]
+
 ## POST /api/v1/actions{?remember_token}
 Use this resource for adding a new action.
 
@@ -1467,6 +1518,35 @@ Use this resource for retrieving all the forces existing in the API.
 + Response 200 (application/json)
     + Body 
    
+            [ 
+                {
+                    "id":1,
+                    "name":"First",
+                    "created_at":"2014-07-05T14:51:15.131Z",
+                    "updated_at":"2014-07-05T14:51:15.131Z",
+                    "url":"http://localhost:3000/api/v1/force/1",
+                    "impacts_url":"http://localhost:3000/api/v1/force/1/impacts",
+                    "concern": {
+                        "id":1,
+                        "name":"First",
+                        "created_at":"2014-07-05T14:51:15.131Z",
+                        "updated_at":"2014-07-05T14:51:15.131Z",
+                        "url":"http://localhost:3000/api/v1/concern/1",
+                        "forces_url":"http://localhost:3000/api/v1/concern/1/forces",
+                    }
+                }
+            ]
+
+## GET /api/v1/concerns/{id}/forces{?remember_token}
+Use this resource for retrieving all the forces that address a certain concern.
+
++ Parameters
+    + id (string) ... ID of a concern.
+    + remember_token (string) ... The access token.
+
++ Response 200 (application/json)
+    + Body 
+    
             [ 
                 {
                     "id":1,
