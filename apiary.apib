@@ -1019,7 +1019,7 @@ actions that stakeholders did regarding certain decisions.
 
 # Action properties
 
-*   id (integer): Version id
+*   id (integer): Action id
 *   action (string): The action that the stakeholder did
 *   created_at (date): Date of stakeholder creation
 *   updated_at (date): Date of last stakeholder update
@@ -1237,6 +1237,212 @@ Use this resource for deleting an action using its id.
             ]
 
 #Group Impact
+Use this resource for adding, updating, deleting or just retrieval of 
+impacts that forces have on taking certain decisions.
+
+# Impact properties
+
+*   id (integer): Impact id
+*   description (string): Description of impact
+*   created_at (date): Date of impact creation
+*   updated_at (date): Date of last impact update
+*   url (uri): URL of current impact
+*   decision: Decision that was influenced by the force
+*   force: Force that influenced the decision
+
+## GET /api/v1/impacts/{?remember_token}
+Use this resource for retrieving all the impacts existing in the API.
+
++ Parameters
+     + remember_token (string) ... The access token.
+
++ Response 200 (application/json)
+    + Body 
+   
+            [ 
+                {
+                    id: 1,
+                    description: "A description",
+                    created_at: "2014-07-05T14:51:15.131Z",
+                    updated_at: "2014-07-05T14:51:15.131Z",
+                    url: "http://localhost:3000/api/v1/impacts/1",
+                    decision: {
+                        "id":1,
+                        "name":"First",
+                        "created_at":"2014-07-05T14:51:15.131Z",
+                        "updated_at":"2014-07-05T14:51:15.131Z",
+                        "url":"http://localhost:3000/api/v1/decisions/1",
+                        "versions_url":"http://localhost:3000/api/v1/decisions/1/versions",
+                        "dependences_url":http://localhost:3000/api/v1/decisions/1/dependences",
+                        "project_url":http://localhost:3000/api/v1/decisions/1/project"
+                    },
+                    force: {
+                        "id":1,
+                        "name":"First",
+                        "created_at":"2014-07-05T14:51:15.131Z",
+                        "updated_at":"2014-07-05T14:51:15.131Z",
+                        "url":"http://localhost:3000/api/v1/force/1",
+                        "impacts_url":"http://localhost:3000/api/v1/force/1/impacts",
+                        "concern": {
+                            "id":1,
+                            "name":"First",
+                            "created_at":"2014-07-05T14:51:15.131Z",
+                            "updated_at":"2014-07-05T14:51:15.131Z",
+                            "url":"http://localhost:3000/api/v1/concern/1",
+                            "forces_url":"http://localhost:3000/api/v1/concern/1/forces",
+                        }
+                    }
+                }
+            ]
+
+## POST /api/v1/impacts{?remember_token}
+Use this resource for adding a new impact.
+
++ Parameters
+    + remember_token (string) ... The access token.
+
++ Request (application/json)
+
+        { 
+            "impact": 
+                { 
+                    "description": "A description", 
+                    "decision_id": 1,
+                    "force_id": 1
+                } 
+        }
+    
++ Response 200 (application/json)
+    + Body
+
+            [ 
+                {
+                    id: 1,
+                    description: "A description",
+                    created_at: "2014-07-05T14:51:15.131Z",
+                    updated_at: "2014-07-05T14:51:15.131Z",
+                    url: "http://localhost:3000/api/v1/impacts/1",
+                    decision: {
+                        "id":1,
+                        "name":"First",
+                        "created_at":"2014-07-05T14:51:15.131Z",
+                        "updated_at":"2014-07-05T14:51:15.131Z",
+                        "url":"http://localhost:3000/api/v1/decisions/1",
+                        "versions_url":"http://localhost:3000/api/v1/decisions/1/versions",
+                        "dependences_url":http://localhost:3000/api/v1/decisions/1/dependences",
+                        "project_url":http://localhost:3000/api/v1/decisions/1/project"
+                    },
+                    force: {
+                        "id":1,
+                        "name":"First",
+                        "created_at":"2014-07-05T14:51:15.131Z",
+                        "updated_at":"2014-07-05T14:51:15.131Z",
+                        "url":"http://localhost:3000/api/v1/force/1",
+                        "impacts_url":"http://localhost:3000/api/v1/force/1/impacts",
+                        "concern": {
+                            "id":1,
+                            "name":"First",
+                            "created_at":"2014-07-05T14:51:15.131Z",
+                            "updated_at":"2014-07-05T14:51:15.131Z",
+                            "url":"http://localhost:3000/api/v1/concern/1",
+                            "forces_url":"http://localhost:3000/api/v1/concern/1/forces",
+                        }
+                    }
+                }
+            ]
+
+## GET /api/v1/impacts/{id}{?remember_token}
+Use this resource for retrieving a certain impact with a certain id.
+
++ Parameters
+    + id (string) ... ID of an impact.
+    + remember_token (string) ... The access token.
+    
++ Response 200 (application/json)
+    + Body 
+    
+            [ 
+                {
+                    id: 1,
+                    description: "A description",
+                    created_at: "2014-07-05T14:51:15.131Z",
+                    updated_at: "2014-07-05T14:51:15.131Z",
+                    url: "http://localhost:3000/api/v1/impacts/1",
+                    decision: {
+                        "id":1,
+                        "name":"First",
+                        "created_at":"2014-07-05T14:51:15.131Z",
+                        "updated_at":"2014-07-05T14:51:15.131Z",
+                        "url":"http://localhost:3000/api/v1/decisions/1",
+                        "versions_url":"http://localhost:3000/api/v1/decisions/1/versions",
+                        "dependences_url":http://localhost:3000/api/v1/decisions/1/dependences",
+                        "project_url":http://localhost:3000/api/v1/decisions/1/project"
+                    },
+                    force: {
+                        "id":1,
+                        "name":"First",
+                        "created_at":"2014-07-05T14:51:15.131Z",
+                        "updated_at":"2014-07-05T14:51:15.131Z",
+                        "url":"http://localhost:3000/api/v1/force/1",
+                        "impacts_url":"http://localhost:3000/api/v1/force/1/impacts",
+                        "concern": {
+                            "id":1,
+                            "name":"First",
+                            "created_at":"2014-07-05T14:51:15.131Z",
+                            "updated_at":"2014-07-05T14:51:15.131Z",
+                            "url":"http://localhost:3000/api/v1/concern/1",
+                            "forces_url":"http://localhost:3000/api/v1/concern/1/forces",
+                        }
+                    }
+                }
+            ]
+
+## PUT /api/v1/impacts/{id}{?remember_token}
+Use this resource for editing an impact using its id.
+
++ Parameters
+    + id (string) ... ID of an impact.
+    + remember_token (string) ... The access token.
+    
++ Request (application/json)
+
+        { 
+            "impact": 
+                { 
+                    "description": "A description", 
+                    "decision_id": 1,
+                    "force_id": 1
+                } 
+        }
+
++ Response 200 (application/json)
+    + Body
+    
+            [
+                {
+                    "status_code":200,
+                    "message":"Resource updated successfully!",
+                    "content":""
+                }
+            ]
+
+## DELETE /api/v1/actions/{id}{?remember_token}
+Use this resource for deleting an impact using its id. 
+
++ Parameters
+    + id (string) ... ID of an impact.
+    + remember_token (string) ... The access token.
+    
++ Response 200 (application/json)
+    + Body
+    
+            [
+                {
+                    "status_code":200,
+                    "message":"Resource deleted successfully!",
+                    "content":""
+                }
+            ]
 
 #Group Force
 
