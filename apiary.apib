@@ -1445,5 +1445,158 @@ Use this resource for deleting an impact using its id.
             ]
 
 #Group Force
+Use this resource for adding, updating, deleting or just retrieval of 
+forces.
+
+# Force properties
+
+*   id (integer): Force id
+*   name (string): Name of force
+*   created_at (date): Date of force creation
+*   updated_at (date): Date of last force update
+*   url (uri): URL of current force
+*   impacts_url (uri): URL of impacts that the current force had on decisions
+*   concern: Concern regarding the force
+
+## GET /api/v1/forces/{?remember_token}
+Use this resource for retrieving all the forces existing in the API.
+
++ Parameters
+     + remember_token (string) ... The access token.
+
++ Response 200 (application/json)
+    + Body 
+   
+            [ 
+                {
+                    "id":1,
+                    "name":"First",
+                    "created_at":"2014-07-05T14:51:15.131Z",
+                    "updated_at":"2014-07-05T14:51:15.131Z",
+                    "url":"http://localhost:3000/api/v1/force/1",
+                    "impacts_url":"http://localhost:3000/api/v1/force/1/impacts",
+                    "concern": {
+                        "id":1,
+                        "name":"First",
+                        "created_at":"2014-07-05T14:51:15.131Z",
+                        "updated_at":"2014-07-05T14:51:15.131Z",
+                        "url":"http://localhost:3000/api/v1/concern/1",
+                        "forces_url":"http://localhost:3000/api/v1/concern/1/forces",
+                    }
+                }
+            ]
+
+## POST /api/v1/forces{?remember_token}
+Use this resource for adding a new forces.
+
++ Parameters
+    + remember_token (string) ... The access token.
+
++ Request (application/json)
+
+        { 
+            "force": 
+                { 
+                    "name": "A force", 
+                    "concern_id": 1
+                } 
+        }
+    
++ Response 200 (application/json)
+    + Body
+
+            [ 
+                {
+                    "id":1,
+                    "name":"A force",
+                    "created_at":"2014-07-05T14:51:15.131Z",
+                    "updated_at":"2014-07-05T14:51:15.131Z",
+                    "url":"http://localhost:3000/api/v1/force/1",
+                    "impacts_url":"http://localhost:3000/api/v1/force/1/impacts",
+                    "concern": {
+                        "id":1,
+                        "name":"First",
+                        "created_at":"2014-07-05T14:51:15.131Z",
+                        "updated_at":"2014-07-05T14:51:15.131Z",
+                        "url":"http://localhost:3000/api/v1/concern/1",
+                        "forces_url":"http://localhost:3000/api/v1/concern/1/forces",
+                    }
+                }
+            ]
+
+## GET /api/v1/forces/{id}{?remember_token}
+Use this resource for retrieving a certain force with a certain id.
+
++ Parameters
+    + id (string) ... ID of a force.
+    + remember_token (string) ... The access token.
+    
++ Response 200 (application/json)
+    + Body 
+    
+            [ 
+                {
+                    "id":1,
+                    "name":"First",
+                    "created_at":"2014-07-05T14:51:15.131Z",
+                    "updated_at":"2014-07-05T14:51:15.131Z",
+                    "url":"http://localhost:3000/api/v1/force/1",
+                    "impacts_url":"http://localhost:3000/api/v1/force/1/impacts",
+                    "concern": {
+                        "id":1,
+                        "name":"First",
+                        "created_at":"2014-07-05T14:51:15.131Z",
+                        "updated_at":"2014-07-05T14:51:15.131Z",
+                        "url":"http://localhost:3000/api/v1/concern/1",
+                        "forces_url":"http://localhost:3000/api/v1/concern/1/forces",
+                    }
+                }
+            ]
+
+## PUT /api/v1/forces/{id}{?remember_token}
+Use this resource for editing a force using its id.
+
++ Parameters
+    + id (string) ... ID of an force.
+    + remember_token (string) ... The access token.
+    
++ Request (application/json)
+
+        { 
+            "force": 
+                { 
+                    "name": "A force", 
+                    "concern_id": 1
+                } 
+        }
+
++ Response 200 (application/json)
+    + Body
+    
+            [
+                {
+                    "status_code":200,
+                    "message":"Resource updated successfully!",
+                    "content":""
+                }
+            ]
+
+## DELETE /api/v1/forces/{id}{?remember_token}
+Use this resource for deleting a force using its id. 
+
++ Parameters
+    + id (string) ... ID of a force.
+    + remember_token (string) ... The access token.
+    
++ Response 200 (application/json)
+    + Body
+    
+            [
+                {
+                    "status_code":200,
+                    "message":"Resource deleted successfully!",
+                    "content":""
+                }
+            ]
 
 #Group Concern
