@@ -540,6 +540,131 @@ Use this resource for deleting a decision version using its id.
 *   versions_url (uri): URL for accessing the versions of a iteration
 *   project_url (uri): URL for accessing the project which the iteration belogs to
 
+## GET /api/v1/iterations/{?remember_token}
+Use this resource for retrieving all the iterations existing in the API.
+
++ Parameters
+     + remember_token (string) ... The access token.
+
++ Response 200 (application/json)
+    + Body 
+    
+        [
+            {
+                id: 1,
+                name: "First iteration",
+                description: "A description",
+                created_at: "2014-06-21T12:13:10.344Z",
+                updated_at: "2014-06-21T12:13:10.344Z",
+                url: "http://localhost:3000/api/v1/iterations/1",
+                versions_url: "http://localhost:3000/api/v1/iterations/1/versions",
+                project_url: "http://localhost:3000/api/v1/projects/1"
+            }
+        ]
+
+## POST /api/v1/iterations{?remember_token}
+Use this resource for adding a new iteration.
+
++ Parameters
+    + remember_token (string) ... The access token.
+
++ Request (application/json)
+
+        { 
+            "iteration": 
+                { 
+                    "name": "First iteration", 
+                    "description": "A description",
+                    "project_id": 1
+                } 
+        }
+    
++ Response 200 (application/json)
+    + Body
+
+        [
+            {
+                id: 1,
+                name: "First iteration",
+                description: "A description",
+                created_at: "2014-06-21T12:13:10.344Z",
+                updated_at: "2014-06-21T12:13:10.344Z",
+                url: "http://localhost:3000/api/v1/iterations/1",
+                versions_url: "http://localhost:3000/api/v1/iterations/1/versions",
+                project_url: "http://localhost:3000/api/v1/projects/1"
+            }
+        ]
+
+## GET /api/v1/iterations/{id}{?remember_token}
+Use this resource for retrieving a certain iteration with a certain id.
+
++ Parameters
+    + id (string) ... ID of an iteration.
+    + remember_token (string) ... The access token.
+    
++ Response 200 (application/json)
+    + Body 
+    
+            [
+                {
+                    id: 1,
+                    name: "First iteration",
+                    description: "A description",
+                    created_at: "2014-06-21T12:13:10.344Z",
+                    updated_at: "2014-06-21T12:13:10.344Z",
+                    url: "http://localhost:3000/api/v1/iterations/1",
+                    versions_url: "http://localhost:3000/api/v1/iterations/1/versions",
+                    project_url: "http://localhost:3000/api/v1/projects/1"
+                }
+            ]
+
+## PUT /api/v1/iterations/{id}{?remember_token}
+Use this resource for editing an iteration using its id.
+
++ Parameters
+    + id (string) ... ID of an iteration.
+    + remember_token (string) ... The access token.
+    
++ Request (application/json)
+
+        [ 
+            "iteration": 
+                { 
+                    "name": "Second iteration", 
+                    "description": "Another description",
+                    "project_id": 1
+                } 
+        ]
+
++ Response 200 (application/json)
+    + Body
+    
+            [
+                {
+                    "status_code":200,
+                    "message":"Resource updated successfully!",
+                    "content":""
+                }
+            ]
+
+## DELETE /api/v1/iterations/{id}{?remember_token}
+Use this resource for deleting an iteration using its id. 
+
++ Parameters
+    + id (string) ... ID of a iteration.
+    + remember_token (string) ... The access token.
+    
++ Response 200 (application/json)
+    + Body
+    
+            [
+                {
+                    "status_code":200,
+                    "message":"Resource deleted successfully!",
+                    "content":""
+                }
+            ]
+
 #Group Group    
 
 #Group Dependence
@@ -596,7 +721,7 @@ Use this resource for adding a new stakeholder.
             "stakeholder": 
                 { 
                     "name": "John", 
-                    "function": "Manager", 
+                    "function": "Manager"
                 } 
         }
     
