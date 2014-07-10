@@ -1557,7 +1557,7 @@ Use this resource for retrieving a certain force with a certain id.
 Use this resource for editing a force using its id.
 
 + Parameters
-    + id (string) ... ID of an force.
+    + id (string) ... ID of a force.
     + remember_token (string) ... The access token.
     
 + Request (application/json)
@@ -1600,3 +1600,129 @@ Use this resource for deleting a force using its id.
             ]
 
 #Group Concern
+Use this resource for adding, updating, deleting or just retrieval of 
+concerns.
+
+# Concern properties
+
+*   id (integer): Concern id
+*   name (string): Name of concern
+*   created_at (date): Date of concern creation
+*   updated_at (date): Date of last concern update
+*   url (uri): URL of current concern
+*   forces_url (uri): URL for accessing the forces that address the current concern
+
+## GET /api/v1/concern/{?remember_token}
+Use this resource for retrieving all the concerns existing in the API.
+
++ Parameters
+     + remember_token (string) ... The access token.
+
++ Response 200 (application/json)
+    + Body 
+   
+            [ 
+                {
+                    "id":1,
+                    "name":"First",
+                    "created_at":"2014-07-05T14:51:15.131Z",
+                    "updated_at":"2014-07-05T14:51:15.131Z",
+                    "url":"http://localhost:3000/api/v1/concern/1",
+                    "forces_url":"http://localhost:3000/api/v1/concern/1/forces"
+                }
+            ]
+
+## POST /api/v1/concerns{?remember_token}
+Use this resource for adding a new concern.
+
++ Parameters
+    + remember_token (string) ... The access token.
+
++ Request (application/json)
+
+        { 
+            "concern": 
+                { 
+                    "name": "A concern"
+                } 
+        }
+    
++ Response 200 (application/json)
+    + Body
+
+            [ 
+                {
+                    "id":1,
+                    "name":"A concern",
+                    "created_at":"2014-07-05T14:51:15.131Z",
+                    "updated_at":"2014-07-05T14:51:15.131Z",
+                    "url":"http://localhost:3000/api/v1/concern/1",
+                    "forces_url":"http://localhost:3000/api/v1/concern/1/forces"
+                }
+            ]
+
+## GET /api/v1/concerns/{id}{?remember_token}
+Use this resource for retrieving a certain concern with a certain id.
+
++ Parameters
+    + id (string) ... ID of a concern.
+    + remember_token (string) ... The access token.
+    
++ Response 200 (application/json)
+    + Body 
+    
+            [ 
+                {
+                    "id":1,
+                    "name":"First",
+                    "created_at":"2014-07-05T14:51:15.131Z",
+                    "updated_at":"2014-07-05T14:51:15.131Z",
+                    "url":"http://localhost:3000/api/v1/concern/1",
+                    "forces_url":"http://localhost:3000/api/v1/concern/1/forces"
+                }
+            ]
+
+## PUT /api/v1/concerns/{id}{?remember_token}
+Use this resource for editing a concern using its id.
+
++ Parameters
+    + id (string) ... ID of a concern.
+    + remember_token (string) ... The access token.
+    
++ Request (application/json)
+
+        { 
+            "concern": 
+                { 
+                    "name": "A concern"
+                } 
+        }
+
++ Response 200 (application/json)
+    + Body
+    
+            [
+                {
+                    "status_code":200,
+                    "message":"Resource updated successfully!",
+                    "content":""
+                }
+            ]
+
+## DELETE /api/v1/concerns/{id}{?remember_token}
+Use this resource for deleting a concern using its id. 
+
++ Parameters
+    + id (string) ... ID of a concerns.
+    + remember_token (string) ... The access token.
+    
++ Response 200 (application/json)
+    + Body
+    
+            [
+                {
+                    "status_code":200,
+                    "message":"Resource deleted successfully!",
+                    "content":""
+                }
+            ]
